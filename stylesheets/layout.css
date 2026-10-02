@@ -1,0 +1,150 @@
+/* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    /* Шрифт для основного текста - Helvetica Light */
+    font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300; /* Light weight */
+    color: #3b5998;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* --- БЛОК .pervEcr --- */
+.pervEcr {
+    width: 90%;
+    max-width: 1400px;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- ТЕКСТОВАЯ ЧАСТЬ --- */
+.text-content {
+    width: 55%;
+    padding-right: 20px;
+}
+
+.main-title {
+    /* Используем стандартный шрифт для заголовка, 
+       но буква "о" будет заменена на цветочек */
+    font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    color: #3b5998;
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+/* Стилизация буквы-цветочка */
+.flower-letter {
+    /* Используем наш кастомный шрифт */
+    font-family: 'FlowerFont', sans-serif;
+    font-size: 1.2em; /* Чуть больше, чтобы цветок был заметен */
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.description {
+    font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #3b5998;
+    opacity: 0.9;
+    max-width: 90%;
+}
+
+/* --- БЛОК .kar (Картинка) --- */
+.kar {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration {
+    max-width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    /* filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); */
+}
+
+/* --- ЗВЕЗДЫ НА ФОНЕ --- */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 55px; /* Размер звезды */
+    height: 55px;
+    /* Анимация мерцания */
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+/* Разная задержка анимации для каждой звезды, чтобы они мерцали не синхронно */
+.star:nth-child(odd) { animation-delay: 0.5s; }
+.star:nth-child(3n) { animation-delay: 1.2s; }
+.star:nth-child(4n) { animation-delay: 2s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+        padding: 20px 0;
+    }
+
+    .pervEcr {
+        flex-direction: column-reverse;
+        height: auto;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .text-content {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 3rem;
+        margin: 0 auto;
+    }
+
+    .kar {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
